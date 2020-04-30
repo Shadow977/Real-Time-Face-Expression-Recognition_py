@@ -1,45 +1,101 @@
-# Real Time Facial Expression Recognition
-![blog_picture](https://user-images.githubusercontent.com/26830527/48616166-15341800-e993-11e8-9d25-1d1145a6b87d.png)
-## Check out my blog on this case study at the following link:
-https://medium.com/@gauravsharma2656/real-time-facial-expression-recognition-f860dacfeb6a
-## Description
-Computer animated agents and robots bring new dimension in human computer interaction which makes it vital as how computers can affect our social life in day-to-day activities. Face to face communication is a real-time process operating at a a time scale in the order of milliseconds. The level of uncertainty at this time scale is considerable, making it necessary for humans and machines to rely on sensory rich perceptual primitives rather than slow symbolic inference processes.<br><br>
-In this project we are presenting the real time facial expression recognition of seven most basic human expressions: ANGER, DISGUST, FEAR, HAPPY, NEUTRAL SAD, SURPRISE.<br><br>
-This model can be used for prediction of expressions of both still images and real time video. However, in both the cases we have to provide image to the model. In case of real time video the image should be taken at any point in time and feed it to the model for prediction of expression. The system automatically detects face using HAAR cascade then its crops it and resize the image to a specific size and give it to the model for prediction. The model will generate seven probability values corresponding to seven expressions. The highest probability value to the corresponding expression will be the predicted expression for that image.
-## Business Problem
-However, our goal here is to predict the human expressions, but we have trained our model on both human and animated images. Since, we had only approx 1500 human images which are very less to make a good model, so we took approximately 9000 animated images and leverage those animated images for training the model and ultimately do the prediction of expressions on human images.<br><br> 
-For better prediction we have decided to keep the size of each image <b>350*350</b>.<br><br>
-<b>For any image our goal is to predict the expression of the face in that image out of seven basic human expression</b>
-## Problem Statement
-<b>CLASSIFY THE EXPRESSION OF FACE IN IMAGE OUT OF SEVEN BASIC HUMAN EXPRESSION</b>
-## Source Data
-We have downloaded data from 4 different sources.<br>
-1. Human Images Source-1: http://www.consortium.ri.cmu.edu/ckagree/
-2. Human Images Source-2: http://app.visgraf.impa.br/database/faces/
-3. Human Images Source-3: http://www.kasrl.org/jaffe.html
-4. Animated Images Source: https://grail.cs.washington.edu/projects/deepexpr/ferg-db.html
-## Real-World Business Objective & Constraints
-1. Low-latency is required.
-2. Interpretability is important for still images but not in real time. For still images, probability of predicted expressions can be given.
-3. Errors are not costly.
-## How to Run the Model
-After downloading data from the aforementioned sources you have to structure the data into separate folders corresponding to the seven class labels. Then you can use the code in the file "FacialExpressionRecognition.ipynb" to train the model. You can add or delete layers in MLP part of the model based on your data and results. Don't forget to save your model after each epoch. 
-Then for real time prediction you can run the file "Real_Time_Prediction.ipynb".
-## Prerequisites
-You need to have installed following softwares and libraries in your machine before running this project.
-1. Python 3
-2. Anaconda: It will install ipython notebook and most of the libraries which are needed like sklearn, pandas, seaborn, matplotlib, numpy, PIL.
-3. OpenCV
-4. keras
-## Installing
-1. Python 3: https://www.python.org/downloads/
-2. Anaconda: https://www.anaconda.com/download/
-3. OpenCV: pip install opencv-python
-4. Keras: pip install keras
-## Built With
-* ipython-notebook - Python Text Editor
-* OpenCV - It is used for processing images
-* Keras - Deep Learning Library
-* Sklearn: It is a Machine Learning library but here it is used just to calculate accuracy and confusion matrix.
-## Authors
-* Gaurav Sharma - Complete work  
+# Real-Time-Facial-Expression-Recognition-with-DeepLearning
+A real-time facial expression recognition system through webcam streaming and CNN.
+
+## Abstract
+This project aims to recognize facial expression with CNN implemented by Keras. I also implement a real-time module which can real-time capture user's face through webcam steaming called by opencv. OpenCV cropped the face it detects from the original frames and resize the cropped images to 48x48 grayscale image, then take them as inputs of deep leanring model. Moreover, this project also provides a function to combine users' spoken content and  facial expression detected by our system to generate corresponding sentences with appropriate emoticons.
+
+## Dataset
+[fer2013](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data) is the dataset I chose, which is anounced in Kaggle competition in 2013.
+
+## Environment
+I provide my work environment for references.
+
+### Hadware
+CPU : i7-9750H 
+GPU : nvidia GTX 1660ti 6G
+RAM : 16G  
+
+### Software
+OS  : Windows 10 1909  
+Keras 2.3.1 
+opencv 4.2.0 
+Tensorflow GPU 2.1.0
+
+## Installation
+I strongly recommend you to use [`Anaconda`](https://www.continuum.io/downloads), which is a package manager and provides python virtual environment.  
+After you install Anaconda, you can create a virtual environment with python 3.4.
+```
+conda create -n env-name python=3.5.4
+```
+you can also check if your env. has been created by,
+```
+conda info --envs
+```
+You should activate your virtual environment in different way corresponding to your operating system.
+For example, In Ubuntu, you can activate your virtual environment by,
+```
+source activate env-name
+```
+And,
+```
+source deactivate 
+```
+to exit the virtual environment.
+
+The following instructions will lead you to install dependencies, and I suggest you to fllow the order.
+
+#### Install OpenCV
+Note that the version `Anaconda` provided may not be the latest one.
+```
+conda install opencv
+```
+If you fail to install opencv due to python version conflicts, try this command instead,
+```
+conda install -c menpo opencv4=4.2.0
+```
+the version 4.2.0 can be replaced with the lateset one, but in this project, I use `opencv 4.2.0`.
+
+#### Install Tensorflow GPU
+
+```
+pip install tensorflow-gpu
+```
+
+
+#### Install Keras
+Keras is a high-level wrapper of Theano and Tensorflow, it provides friendly APIs to manipulate several kinds of deep learning models.
+```
+pip install --upgrade keras
+```
+#### Install pandas and h5py
+`pandas` can help you to preprocess data if you want train your own deep learning model.
+```
+conda install pandas
+```
+`h5py` is used to save weights of pre-trained models.
+```
+conda install h5py
+```
+
+## Usage
+### Simple facial expression detection
+After installing dependencies, you can move to `root` directory and simply type this command,
+```
+python main.py
+```
+and the system will start detecting user's emotions and print results to the console.  
+
+### Switching Between Webcam and File from Computer
+Just open the `Camera.py` file and in the line
+
+```
+self.video = cv2.VideoCapture(0)
+```
+Replace `0` with `File Directory`
+
+```
+self.video = cv2.VideoCapture("File name")
+```
+
+## Contact
+Please give me a star if you like my project.
