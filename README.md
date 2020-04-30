@@ -1,4 +1,4 @@
-# Real-Time-Facial-Expression-Recognition-with-DeepLearning
+# Real-Time-Facial-Expression-Recognition
 A real-time facial expression recognition system through webcam streaming and CNN.
 
 ## Abstract
