@@ -83,7 +83,7 @@ After installing dependencies, you can move to `root` directory and simply type 
 ```
 python main.py
 ```
-and the system will start detecting user's emotions and print results to the console.  
+after running the script open the web browser and go to 0.0.0.0 and port number is 5000.
 
 ### Switching Between Webcam and File from Computer
 Just open the `Camera.py` file and in the line
