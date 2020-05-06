@@ -23,7 +23,7 @@ Tensorflow GPU 2.1.0
 
 ## Installation
 I strongly recommend you to use [`Anaconda`](https://www.continuum.io/downloads), which is a package manager and provides python virtual environment.  
-After you install Anaconda, you can create a virtual environment with python 3.4.
+After you install Anaconda, you can create a virtual environment with python 3.5.4.
 ```
 conda create -n env-name python=3.5.4
 ```
